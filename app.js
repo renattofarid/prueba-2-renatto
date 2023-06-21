@@ -15,3 +15,28 @@ const to_do = [
     'Comprar entradas para el cine',
 ]
 
+const ul = GI.createElement('ul');
+
+to_do.forEach((item) => {
+    const li = GI.createElement('li');
+
+    const checkbox = GI.createElement('input');
+    checkbox.type = 'checkbox';
+
+    checkbox.addEventListener('change', (event) => {
+        if (checkbox.checked) {
+            li.style.textDecoration = 'line-through';
+            li.style.color = 'gray';
+        } else {
+            li.style.textDecoration = 'none';
+            li.style.color = 'inherit';
+        }
+    });
+
+    const text = document.createTextNode(item);
+    li.appendChild(checkbox);
+    li.appendChild(text);
+    ul.appendChild(li);
+});
+
+document.body.appendChild(ul);
